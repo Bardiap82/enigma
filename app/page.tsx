@@ -103,15 +103,15 @@ export default function Home() {
         </div>
 
         <div className="player">
-          <time>{formatTime(currentTime)}</time>
-          <input aria-label="Track progress" type="range" min="0" max={duration || 215} step="0.1" value={currentTime} onChange={(event) => seek(Number(event.target.value))} />
+          <time className="player-time player-time-current">{formatTime(currentTime)}</time>
+          <input className="player-slider" aria-label="Track progress" type="range" min="0" max={duration || 215} step="0.1" value={currentTime} onChange={(event) => seek(Number(event.target.value))} />
           <button className="play" onClick={togglePlayback} aria-label={isPlaying ? "Pause song" : "Play song"}>
             {isPlaying ? <svg viewBox="0 0 24 24"><path d="M8 6v12M16 6v12" /></svg> : <svg viewBox="0 0 24 24"><path d="m9 6 9 6-9 6V6Z" fill="currentColor" /></svg>}
           </button>
           <a className="player-download" href={track.file} download aria-label="Download Recursion">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v11m0 0 4-4m-4 4-4-4M5 19h14" /></svg>
           </a>
-          <time>{formatTime(duration)}</time>
+          <time className="player-time player-time-total">{formatTime(duration)}</time>
           <button type="button" className="volume" onClick={toggleMute} aria-label={muted ? "Unmute" : "Mute"} aria-pressed={muted}>
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d={muted ? "M4 10v4h4l5 4V6L8 10H4Zm11.3-2.3-6.6 6.6m0-6.6 6.6 6.6" : "M4 10v4h4l5 4V6L8 10H4Zm12.5 2a3.5 3.5 0 0 0-1.5-2.87v5.74A3.5 3.5 0 0 0 16.5 12Zm0-7a1 1 0 0 0-.67 1.74 7 7 0 0 1 0 10.52A1 1 0 0 0 17.17 18a9 9 0 0 0 0-12.04A1 1 0 0 0 16.5 5Z"} fill="currentColor" />
