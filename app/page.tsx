@@ -84,7 +84,8 @@ export default function Home() {
         <div className="brand">ENIGMA MAGAZINE</div>
         <div className="mast-rule" />
         <div className="university-brand">
-          <Image className="university-logo" src="/university-logo.png" alt="Islamic Azad University logo" width={150} height={150} priority />
+          <Image className="university-logo" src="/logo.png" alt="Computer Science Department logo" width={150} height={150} priority />
+          <Image className="university-logo" src="/university-logo.png" alt="University of Science and Technology of Mazandaran logo" width={150} height={150} priority />
           <span><b>UNIVERSITY OF SCIENCE</b><em>&amp;</em><b>TECHNOLOGY OF MAZANDARAN</b></span>
         </div>
       </header>
