@@ -85,23 +85,26 @@ button, input {
   mix-blend-mode: soft-light;
 }
 
-/* Side Binary Decorators */
+/* Side Binary Decorators - always visible, safely inset from content lines */
 .side-binary {
   position: absolute;
-  top: 26%;
+  top: clamp(12rem, 28vh, 22rem);
   color: #cc3333;
   font: 0.8rem/1.8 ui-monospace, monospace;
   opacity: 0.85;
   pointer-events: none;
   user-select: none;
+  z-index: 5;
+  width: 1.2rem;
+  text-align: center;
 }
 
 .side-binary.left {
-  left: clamp(1rem, 3.5vw, 3.5rem);
+  left: clamp(0.4rem, 2.5vw, 3.5rem);
 }
 
 .side-binary.right {
-  right: clamp(1rem, 3.5vw, 3.5rem);
+  right: clamp(0.4rem, 2.5vw, 3.5rem);
 }
 
 /* Masthead Header */
@@ -176,7 +179,7 @@ button, input {
   width: min(100%, 900px);
   margin: clamp(2.5rem, 8vh, 7rem) auto 0;
   text-align: center;
-  padding: 0 clamp(0.25rem, 2vw, 1rem);
+  padding: 0 clamp(1.8rem, 5vw, 3.5rem);
 }
 
 .edition {
@@ -233,7 +236,7 @@ button, input {
   letter-spacing: clamp(0.1em, 1vw, 0.22em);
 }
 
-/* Signal & Waveform */
+/* Signal & Waveform - safely bounded inside content boundaries */
 .signal {
   position: relative;
   display: grid;
@@ -246,8 +249,8 @@ button, input {
 
 .orbital-ring {
   position: absolute;
-  left: 0;
-  right: 0;
+  left: clamp(0.75rem, 2.5vw, 1.8rem);
+  right: clamp(0.75rem, 2.5vw, 1.8rem);
   height: 100%;
   border: 1px solid rgba(224, 36, 37, 0.65);
   border-radius: 50% 50% 0 0;
@@ -258,7 +261,7 @@ button, input {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: min(92%, 36rem);
+  width: min(88%, 34rem);
   height: clamp(4.5rem, 12vw, 7rem);
   gap: clamp(1.5px, 0.4vw, 3px);
   position: relative;
@@ -510,7 +513,7 @@ button, input {
   color: #bdb4b0;
   font: 0.82rem/1.9 ui-monospace, monospace;
   letter-spacing: 0.05em;
-  padding: 0 clamp(0.5rem, 2vw, 1rem);
+  padding: 0 clamp(1.8rem, 5vw, 3rem);
   text-align: center;
 }
 
@@ -588,17 +591,55 @@ footer b {
   line-height: 1.5;
 }
 
-/* Breakpoint: Tablets & Small Screens (<= 960px) */
+/* Breakpoint: Tablets & Medium Screens (<= 960px) */
 @media (max-width: 960px) {
   .side-binary {
-    display: none;
+    display: block;
+    top: clamp(11rem, 28vh, 18rem);
+    font-size: clamp(0.65rem, 1.6vw, 0.75rem);
+    line-height: 1.7;
+    opacity: 0.8;
+  }
+
+  .side-binary.left {
+    left: clamp(0.4rem, 1.8vw, 1.25rem);
+  }
+
+  .side-binary.right {
+    right: clamp(0.4rem, 1.8vw, 1.25rem);
+  }
+
+  .track {
+    padding: 0 clamp(2rem, 6vw, 4rem);
+  }
+
+  .signal {
+    max-width: 36rem;
   }
 }
 
 /* Breakpoint: Mobile Devices (<= 640px) */
 @media (max-width: 640px) {
   .music-page {
-    padding: 1.25rem 1rem 1.5rem;
+    padding: 1.25rem 0.85rem 1.5rem;
+  }
+
+  /* Keep numbers on left and right on mobile, framed without line overlap */
+  .side-binary {
+    display: block;
+    top: clamp(9.5rem, 25vh, 15rem);
+    font-size: clamp(0.58rem, 1.8vw, 0.7rem);
+    line-height: 1.65;
+    opacity: 0.8;
+    width: 1rem;
+  }
+
+  .side-binary.left {
+    left: clamp(0.3rem, 1.5vw, 0.65rem);
+  }
+
+  .side-binary.right {
+    right: clamp(0.3rem, 1.5vw, 0.65rem);
   }
 
   .masthead {
@@ -620,17 +661,32 @@ footer b {
   }
 
   .track {
-    margin-top: clamp(2rem, 6vh, 4rem);
+    margin-top: clamp(1.8rem, 4.5vh, 3.2rem);
+    padding: 0 clamp(1.6rem, 5.5vw, 2.5rem);
   }
 
   .track h1 {
-    font-size: clamp(2.3rem, 13vw, 3.8rem);
-    letter-spacing: 0.08em;
+    font-size: clamp(2.1rem, 11.5vw, 3.5rem);
+    letter-spacing: 0.06em;
   }
 
   .meta {
-    gap: 0.8rem;
-    letter-spacing: 0.28em;
+    gap: 0.6rem;
+    letter-spacing: 0.22em;
+  }
+
+  .signal {
+    max-width: 24rem;
+    margin: clamp(0.9rem, 2.5vh, 1.5rem) auto;
+  }
+
+  .orbital-ring {
+    left: clamp(0.5rem, 2vw, 1.25rem);
+    right: clamp(0.5rem, 2vw, 1.25rem);
+  }
+
+  .waveform {
+    width: min(88%, 20rem);
   }
 
   /* Adapted 2-row Mobile Audio Player */
@@ -640,14 +696,14 @@ footer b {
       "volume play download";
     grid-template-columns: auto 1fr auto;
     grid-template-rows: auto auto;
-    row-gap: 0.9rem;
-    column-gap: 0.75rem;
+    row-gap: 0.85rem;
+    column-gap: 0.65rem;
     align-items: center;
     justify-items: center;
-    width: min(100%, 23rem);
+    width: min(100%, 21.5rem);
     min-height: unset;
-    border-radius: 28px;
-    padding: 1.1rem 1.25rem;
+    border-radius: 26px;
+    padding: 1rem 1.15rem;
   }
 
   .player-slider {
@@ -655,8 +711,8 @@ footer b {
   }
 
   .play {
-    width: 3.6rem;
-    height: 3.6rem;
+    width: 3.5rem;
+    height: 3.5rem;
     margin: 0;
   }
 
@@ -674,6 +730,7 @@ footer b {
 
   .description {
     margin: clamp(2.5rem, 6vh, 4rem) auto clamp(3rem, 7vh, 4.5rem);
+    padding: 0 clamp(1.6rem, 5.5vw, 2.5rem);
   }
 
   .footer-main {
@@ -699,7 +756,25 @@ footer b {
 /* Breakpoint: Extra Narrow Mobile (<= 360px) */
 @media (max-width: 360px) {
   .music-page {
-    padding: 1rem 0.75rem 1.25rem;
+    padding: 1rem 0.6rem 1.25rem;
+  }
+
+  .side-binary {
+    font-size: 0.54rem;
+    line-height: 1.55;
+    top: clamp(8.5rem, 24vh, 13rem);
+  }
+
+  .side-binary.left {
+    left: 0.2rem;
+  }
+
+  .side-binary.right {
+    right: 0.2rem;
+  }
+
+  .track {
+    padding: 0 1.25rem;
   }
 
   .brand {
@@ -708,23 +783,33 @@ footer b {
   }
 
   .track h1 {
-    font-size: 2.1rem;
-    letter-spacing: 0.05em;
+    font-size: 2rem;
+    letter-spacing: 0.04em;
   }
 
-  .player {
-    padding: 0.9rem 0.85rem;
-    column-gap: 0.5rem;
-    border-radius: 22px;
+  .signal {
+    max-width: 18rem;
   }
 
-  .play {
-    width: 3.25rem;
-    height: 3.25rem;
+  .orbital-ring {
+    left: 0.35rem;
+    right: 0.35rem;
   }
 
   .waveform {
-    width: 98%;
+    width: 96%;
     gap: 1.5px;
+  }
+
+  .player {
+    padding: 0.85rem 0.8rem;
+    column-gap: 0.45rem;
+    border-radius: 20px;
+    width: 100%;
+  }
+
+  .play {
+    width: 3.2rem;
+    height: 3.2rem;
   }
 }
