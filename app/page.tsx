@@ -93,7 +93,7 @@ export default function Home() {
         <p className="edition">ENIGMA MUSIC SERIES / 001</p>
         <h1>{track.title}</h1>
         <p className="meta">{track.genre}</p>
-        <p className="byline">BY <strong>{track.artist}</strong><small>COMPOSER &amp; CS STUDENT</small></p>
+        <p className="byline">BY <strong>{track.artist}</strong><small>COMPOSER, PRODUCER &amp; CS STUDENT</small></p>
 
         <div className="signal">
           <div className="orbital-ring" />
