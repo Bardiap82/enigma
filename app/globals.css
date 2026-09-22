@@ -183,10 +183,10 @@ button, input {
 
 /* Main Track Section */
 .track {
-  width: min(100%, 900px);
+  width: min(100%, 1100px);
   margin: clamp(2.5rem, 8vh, 7rem) auto 0;
   text-align: center;
-  padding: 0 clamp(1.8rem, 5vw, 3.5rem);
+  padding: 0 clamp(1rem, 3vw, 2.5rem);
 }
 
 .edition {
@@ -201,13 +201,12 @@ button, input {
   margin: clamp(0.6rem, 2vh, 1.4rem) auto clamp(0.8rem, 2.5vh, 1.6rem);
   color: #f2eaea;
   font-weight: 200;
-  font-size: clamp(2.3rem, 11.5vw, 6.8rem);
-  letter-spacing: clamp(0.04em, 1.2vw, 0.16em);
-  line-height: 0.95;
-  text-indent: 0.04em;
+  font-size: clamp(2.2rem, 8.5vw, 5.8rem);
+  letter-spacing: clamp(0.04em, 1vw, 0.14em);
+  line-height: 1;
+  text-indent: 0.08em;
   text-shadow: 0 0 25px rgba(255, 255, 255, 0.12), 10px 0 24px rgba(239, 37, 39, 0.3);
-  word-break: break-word;
-  overflow-wrap: break-word;
+  white-space: nowrap;
 }
 
 .meta {
@@ -617,7 +616,12 @@ footer b {
   }
 
   .track {
-    padding: 0 clamp(2rem, 6vw, 4rem);
+    padding: 0 clamp(1rem, 3.5vw, 2rem);
+  }
+
+  .track h1 {
+    font-size: clamp(2rem, 8vw, 4.5rem);
+    letter-spacing: clamp(0.04em, 0.8vw, 0.1em);
   }
 
   .signal {
@@ -669,12 +673,13 @@ footer b {
 
   .track {
     margin-top: clamp(1.8rem, 4.5vh, 3.2rem);
-    padding: 0 clamp(1.6rem, 5.5vw, 2.5rem);
+    padding: 0 clamp(0.75rem, 3vw, 1.5rem);
   }
 
   .track h1 {
-    font-size: clamp(2.1rem, 11.5vw, 3.5rem);
-    letter-spacing: 0.06em;
+    font-size: clamp(1.75rem, 8.5vw, 3rem);
+    letter-spacing: 0.05em;
+    white-space: nowrap;
   }
 
   .meta {
@@ -781,7 +786,7 @@ footer b {
   }
 
   .track {
-    padding: 0 1.25rem;
+    padding: 0 0.75rem;
   }
 
   .brand {
@@ -790,8 +795,9 @@ footer b {
   }
 
   .track h1 {
-    font-size: 2rem;
-    letter-spacing: 0.04em;
+    font-size: clamp(1.45rem, 7.5vw, 1.85rem);
+    letter-spacing: 0.03em;
+    white-space: nowrap;
   }
 
   .signal {
